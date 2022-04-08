@@ -1,0 +1,82 @@
+OVERVIEW
+This file contains details provided by each team member about the
+module and functional testing they have done.
+The equivalence classes making up the expected inputs of each module
+are also listed, as well as the unit tests in this file that were
+selected to cover them all and show that desired outputs are always
+returned.
+______________________________________________________________________
+Dai, William
+User Interface Component
+
+Details About Module______________________________
+For this project, I mainly focused on the front-end user interface and experience,
+primarily focusing on the Map View component. For the UI, most components were 
+built with native React Native component, with additional an package 
+'react-native-vector-icons' for icon images. Utilizing the React Native components,
+I was able to make the overall UI that the app is based on look cohesive and 
+stylized, featuring 4 buttons (Resync, Nearby, the Avatar button, Settings) and a 
+current user information window. For more UX functionality, I also created the
+'Nearby User' list that is populated by data given from the database, defining
+each user with an entry of what they are currently listening to. I also modified
+the map markers to enable more usage from them, displaying information similar to
+what is found on the user list. I also created the login view, which prompts the
+user to access their Spotify accounts, and initializes the map once authentication
+is returned. Extra effort was spent on further UI enhancement and ensuring that the
+UX worked as intended and the appropriate app functionality was reflected across all
+views.
+
+Details About Testing_____________________________
+Testing of the module starts up right when the application is initialized. The user
+should be prompted with the login screen immediately upon start, with a 'Login' button
+signaling the user to sign into Spotify. If the user fails to sign in, they should not
+move on from this view until they login. Once the user logs in, the login view should
+display a 'Logged in' message, and the button should change to say 'Continue'. Once
+the user presses continue, the app should move to the map view. For the purposes of
+the components for my testing, I will focus on 'Nearby', the user list. Pressing on
+'Nearby' should collapse the current user information view and instead replace it with
+a larger window. This new window should be populated with entries of nearby users based
+on the location of the current user alongside an exit button. Within each entry should
+be the album art, the song name, the artist, the username of that particular entry,
+and an export button that links to the song's profile on Spotify. Clicking on the export
+button should redirect to the device's native browser. Clicking on the exit button should 
+collapse the user list and redisplay the current user information window. Whilst panning
+the map, the user can click on a nearby user marker and it should display a tooltip that
+shares the same information was an entry on the user list without the export button.
+Rather, clicking on the tooltip itself will redirect to the song's profile on the device's
+native browser.
+
+Input Equivalence Classes and Relevant Tests______
+(Make list of entries like the following line)
+Equivalence class: *range of inputs*; Test: *testfilename (I'll use node to do tests)*
+
+______________________________________________________________________
+Nguyen, Aaron
+User Interface Component
+
+Details About Module______________________________
+My main focus on this project was user interface, mainly on the Profile and Settings Page. The
+main component used for these pages were native React Native components, primarily focused on
+'@react-navigation/native-stack' in order to combine the pages together into one app. I also
+worked on ensuring that Resync had functioned for every aspect that need to be resynced when
+it changed. The result is that I created more pages for the App that can update with current
+information, as well as push information to the database. On top of that, I worked with the
+database and Spotify team to ensure that data was able to be loaded up on startup, and updated
+whenever the user resynced the app. 
+
+Details About Testing_____________________________
+After launching the app, you should be able to click the grey center button to access the profile
+page. Since the app has already initialized the user on login, the profile page should have your
+information. Then, there is a return button that should return you to the home page in the same
+state as it was before you entered the profile page. You can then press the settings button to
+access the settings page. There, you can toggle the settings to disable/enable your location sharing
+with the map. You can test this by having another user looking to see if they can see you on the map
+after you toggle the setting. Back on the home page, if you press resync, you should be able to see
+changes to the map, and to the user list. I tested this by having other people change the song they're
+listening to, or changing their settings, and then resyncing to see if the changes have taken any 
+effect.
+
+Input Equivalence Classes and Relevant Tests______
+Input: location sharing settings toggle
+    The user can change the setting for location sharing, which would
+    push to the database and change if you can be seen on the map.
